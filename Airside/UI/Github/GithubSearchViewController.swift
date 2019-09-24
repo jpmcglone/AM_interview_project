@@ -62,6 +62,17 @@ class GithubSearchViewController: UIViewController {
 		return userView
 	}()
 	
+	lazy var noUsersLabel: UILabel = {
+		let label = UILabel()
+		label.text = "No users found"
+		label.textColor = UIColor.lightGray
+		label.font = UIFont.systemFont(ofSize: 15)
+		label.numberOfLines = 0
+		label.textAlignment = .center
+		label.alpha = 0
+		return label
+	}()
+	
 	lazy var topResultLabel: UILabel = {
 		let label = UILabel()
 		label.alpha = 0
@@ -111,6 +122,7 @@ class GithubSearchViewController: UIViewController {
 		view.addSubview(userView)
 		view.addSubview(topResultLabel)
 		view.addSubview(seeAllButton)
+		view.addSubview(noUsersLabel)
 		
 		// Auto layout
 		textField.snp.makeConstraints { make in
@@ -151,6 +163,11 @@ class GithubSearchViewController: UIViewController {
 			make.centerX.equalTo(view.safeAreaLayoutGuide)
 		}
 		
+		noUsersLabel.snp.makeConstraints { make in
+			make.top.equalTo(topResultLabel.snp.bottom).offset(15)
+			make.left.right.equalTo(view.safeAreaLayoutGuide).inset(Constants.Layout.defaultMargin)
+		}
+		
 		seeAllButton.snp.makeConstraints { make in
 			make.top.equalTo(userView.snp.bottom).offset(Constants.Layout.defaultMargin)
 			make.left.right.equalTo(view.safeAreaLayoutGuide).inset(Constants.Layout.defaultMargin)
@@ -172,7 +189,17 @@ class GithubSearchViewController: UIViewController {
 		[userView, seeAllButton, topResultLabel].forEach {
 			$0.alpha = hasTopSearchItem ? 1 : 0
 		}
-			
+		
+		let noUsersFound = (!hasError && !hasTopSearchItem)
+		noUsersLabel.alpha = noUsersFound ? 1 : 0
+		
+		noUsersLabel.text = "No users found"
+		
+		if noUsersFound {
+			let noUsersFoundMessage = "No users found for\n`\(searchItemsViewModel.query)`"
+			Logger.log(noUsersFoundMessage, .warning)
+		}
+		
 		if let topSearchItem = searchItemsViewModel.topSearchItem {
 			let viewModel = GithubUserViewModel(topSearchItem)
 			userView.usernameLabel.text = viewModel.username
@@ -247,7 +274,6 @@ class GithubSearchViewController: UIViewController {
 			let fullName = mrzViewModel.fullName
 			
 			self.mrzDetailsViewModel = mrzViewModel
-			update()
 			
 			// Fetch from Github
 			searchItemsViewModel.searchUsers(fullName) { [weak self] viewModel in
