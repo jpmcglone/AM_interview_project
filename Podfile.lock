@@ -1,0 +1,54 @@
+PODS:
+  - Alamofire (4.9.0)
+  - AlamofireObjectMapper (5.2.1):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
+  - IQKeyboardManager (6.4.2)
+  - "Keyboard+LayoutGuide (1.4.2)"
+  - Kingfisher (5.7.1)
+  - Nimble (8.0.4)
+  - ObjectMapper (3.5.1)
+  - Quick (2.2.0)
+  - SnapKit (5.0.1)
+  - SwiftyBeaver (1.7.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper (~> 5.2.0)
+  - IQKeyboardManager
+  - "Keyboard+LayoutGuide"
+  - Kingfisher
+  - Nimble
+  - ObjectMapper
+  - Quick
+  - SnapKit
+  - SwiftyBeaver
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - IQKeyboardManager
+    - "Keyboard+LayoutGuide"
+    - Kingfisher
+    - Nimble
+    - ObjectMapper
+    - Quick
+    - SnapKit
+    - SwiftyBeaver
+
+SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  AlamofireObjectMapper: 1989f690e982b71921b9253f53a4f33a9bc00d88
+  IQKeyboardManager: b41e0a4943fbac4c11a239d31a688667675f962e
+  "Keyboard+LayoutGuide": c0058071d7d3c99bb70b2b5e6151416cdb44d2ef
+  Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
+  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftyBeaver: da5e573ad583586c18236324c36900990afe1733
+
+PODFILE CHECKSUM: 329ea40c6743171562bb0b7ddd4956606291e34a
+
+COCOAPODS: 1.8.0
