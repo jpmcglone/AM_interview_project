@@ -1,6 +1,6 @@
 import Foundation
 
 enum MRZError: Error {
-	case invalidRawString
+  case invalidRawString
 }
 
